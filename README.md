@@ -2,15 +2,12 @@
 
 Học kỳ 1, Năm học 2023-2024
 
-**MSSV 1** : 
+**MSSV** : B2014866
 
-**Họ tên SV 1**:
+**Họ tên SV**: Võ Thị Yến Nhi
 
-**MSSV 2**:
 
-**Họ tên SV 2**:
+**Lớp học phần**: Công nghệ Web 03
 
-**Lớp học phần**:
-
-**Tên dự án**:
+**Tên dự án**: Web bán đồ chơi mô hình tĩnh
 
