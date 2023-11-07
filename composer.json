@@ -13,6 +13,9 @@
         }
     ],
     "require": {
-        "bramus/router": "^1.6"
+        "bramus/router": "^1.6.1",
+		"league/plates": "v3.5.0",
+		"illuminate/database": "v10.21.0",
+		"vlucas/phpdotenv": "^v5.5.0"
     }
 }
