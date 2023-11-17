@@ -1,6 +1,6 @@
-<?php $this->layout("layouts/default", ["title" => APPNAME]) ?>
+<?php $this->layout("layouts/defaultAdmin", ["title" => APPNAME]) ?>
 
-<?php $this->start("page") ?>
+<?php $this->start("pagee") ?>
 
-Trang Admin 
+Trang Dashboard
 <?php $this->stop() ?>
