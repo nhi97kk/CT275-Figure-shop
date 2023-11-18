@@ -35,11 +35,31 @@ $router->get('/dashboard', '\App\Controllers\Admin\AdminController@index');
     $router->get('/dashboard/product/edit/(\d+)','\App\Controllers\Admin\ProductController@edit');
     $router->post('/dashboard/product/(\d+)','\App\Controllers\Admin\ProductController@update');
     $router->post('/dashboard/product/delete/(\d+)','\App\Controllers\Admin\ProductController@destroy');
-
-
+    //user
+    $router->get('/dashboard/user', '\App\Controllers\Admin\UserController@index');
+    //Admin changePass
+    $router->get('/dashboard/change-password','\App\Controllers\Admin\InfoController@change');
+    $router->post('/dashboard/change-password','\App\Controllers\Admin\InfoController@store');
+    $router->get('/dashboard/change-password/success','\App\Controllers\Admin\InfoController@success');
 
 // User routes
 $router->get('/', '\App\Controllers\User\UserController@index');
+    //product
+    $router->get('/product', '\App\Controllers\User\ProductController@index');
+    $router->get('/product/(\d+)', '\App\Controllers\User\ProductController@detail');
+    $router->post('/product/(\d+)', '\App\Controllers\User\ProductController@add');
+
+    //cart
+    $router->get('/cart', '\App\Controllers\User\CartController@index');
+    $router->post('/cart/minus', '\App\Controllers\User\CartController@minus');
+    $router->post('/cart/plus', '\App\Controllers\User\CartController@plus');
+    $router->post('/cart/delete/(\d+)', '\App\Controllers\User\CartController@destroy');
+    //order
+    $router->get('/order/create', '\App\Controllers\User\OrderController@create');
+    $router->post('/order', '\App\Controllers\User\OrderController@store');
+    $router->get('/order', '\App\Controllers\User\OrderController@index');
+
+
 
 $router->set404('\App\Controllers\Controller@sendNotFound');
 
