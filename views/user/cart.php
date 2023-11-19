@@ -15,7 +15,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
 <?php $this->stop() ?>
 
 <?php $this->start("page") ?>
-<div class="container">
+<div class="container bg-white mt-3 mb-5 rounded py-3">
     <?php if (count($carts) === 0): ?>
         <img src="./uploads/no_cart.png" alt="">
     <?php endif; ?>
@@ -31,6 +31,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
                         <tr>
                             <th scope="col">Name </th>
                             <th scope="col">Photo</th>
+                            <th scope="col">Price</th>
                             <th scope="col">Actions</th>
                             <th scope="col">Total</th>
                             <th scope="col">Delete</th>
@@ -51,6 +52,10 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
                                 <td>
                                     <img class="img-thumbnail" style="width: 5rem;" class="photo"
                                         src="<?= '/uploads/' . html_escape($product['photo']) ?>" alt="photo">
+                                </td>
+                                <td>
+                                    <?= $this->e($product->price) ?> VND
+                                    
                                 </td>
                                 <td>
                                     <div class="input-group align-items-center">
@@ -78,7 +83,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
                                     </div>
                                 </td>
                                 <td>
-                                    <?= $this->e($product->price * $cart->quantity) ?>
+                                    <?= $this->e($product->price * $cart->quantity) ?>VND
                                     <?php $total +=  $product->price * $cart->quantity ?>
                                 </td>
 
@@ -95,7 +100,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
                         <?php endforeach ?>
                     </tbody>
                 </table>
-                <h2 class="text-center">Total: <?= $this->e($total) ?> VND</h2>
+                <h2 class="text-center" style="color: darkcyan;">Total: <?= $this->e($total) ?> VND</h2>
                 <a href="/order/create" class="btn btn-xs btn-warning">
                 <i alt="Edit" class="fa-solid fa-truck-fast"></i> Click to Order</a>
 

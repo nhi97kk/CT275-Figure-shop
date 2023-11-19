@@ -5,6 +5,10 @@ namespace App\Controllers\Admin;
 use App\Controllers\Controller;
 use App\SessionGuard as Guard;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Order;
+use App\Models\Category;
+
 
 class AdminController extends Controller
 {
@@ -18,6 +22,15 @@ class AdminController extends Controller
 
     public function index()
     {
-        $this->sendPage('/admin/dashboard');   
+        $user = User::where('role',0)->count();
+        $product = Product::all()->count();
+        $category = Category::all()->count();
+        $order = Order::all()->count();
+        $this->sendPage('/admin/dashboard',[
+            'user'=> $user,
+            'product'=> $product,
+            'category'=> $category,
+            'order'=> $order
+        ]);   
     }
 }

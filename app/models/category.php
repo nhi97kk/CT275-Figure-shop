@@ -8,6 +8,10 @@ class Category extends Model{
     protected $table = "categorys";
     protected $fillable = ['name','desc'] ;
 
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
     public static function validate(array $data)
     {
         $errors = [];

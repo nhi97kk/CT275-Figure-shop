@@ -8,7 +8,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
 <?php $this->stop() ?>
 
 <?php $this->start("page") ?>
-<div class="container">
+<div class="container bg-white mt-3 mb-5 rounded py-3">
 
     <?php $total = 0; ?>
     <div class="row">
@@ -103,7 +103,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
                 </tbody>
             </table>
             <input type="hidden" value="<?= $this->e($total) ?>" name="total">
-            <h2 class="text-center">Total:
+            <h2 class="text-center" style="color: darkcyan;">Total:
                 <?= $this->e($total) ?> VND
             </h2>
                 <!-- Submit -->

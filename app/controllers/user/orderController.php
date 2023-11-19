@@ -21,7 +21,7 @@ class OrderController extends Controller{
 
     public function create(){
         $user = Guard::user();
-        $carts = Cart::where('user_id',$user->id)->get();
+        $carts = Cart::where('user_id',$user->id)->where('order_id',0)->get();
 
         $this->sendPage('/user/info',[
             'carts' => $carts,

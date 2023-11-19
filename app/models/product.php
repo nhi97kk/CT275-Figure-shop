@@ -8,6 +8,10 @@ class Product extends Model{
     protected $table = "products";
     protected $fillable = ['name','desc','price','quantity','photo','category_id'] ;
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     public static function validate(array $data)
 {
     $errors = [];

@@ -3,7 +3,7 @@
 <?php $this->start("pagee") ?>
 
 
-    <div class="container">
+    <div class="container bg-white mt-3 mb-5 rounded py-3">
         <!-- SECTION HEADING -->
         <h2 class="mt-3 text-center animate__animated animate__bounce">Category</h2>
 

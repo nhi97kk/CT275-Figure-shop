@@ -4,7 +4,7 @@ use \App\Models\Cart;
 $this->layout("layouts/defaultAdmin", ["title" => APPNAME]) ?>
 
 <?php $this->start("pagee") ?>
-<div class="container">
+<div class="container bg-white mt-3 mb-5 rounded py-3">
 
     <?php $total = 0; ?>
     <div class="row">

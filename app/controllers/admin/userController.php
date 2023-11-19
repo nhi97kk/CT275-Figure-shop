@@ -16,11 +16,8 @@ class UserController extends Controller{
     }
 
     public function index(){
-        $users = User::all();
+        $users = User::where('role',0)->get();
         $this->sendPage('/admin/user/index', ['users'=>$users]);
     }
 }
 
-// if (!Guard::isUserLoggedIn()) {
-//     redirect('/login');
-// } else

@@ -23,28 +23,28 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
 <?php $this->stop() ?>
 
 <?php $this->start("page") ?>
-<div class="alert alert-success alert-dismissible fade <?= isset($status['none']) ? 'show' : '' ?>" style="position: fixed; right:0;">
+<div class="alert alert-success alert-dismissible fade <?= isset($status['none']) ? 'show' : '' ?>" style="position: fixed; right:1rem; top:7rem;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>Success!</strong> Đã thêm sản phẩm vào giỏ hàng!
 </div>
 
-<div class="alert alert-warning alert-dismissible fade <?= isset($status['error']) ? 'show' : '' ?>" style="position: fixed; right:0;">
+<div class="alert alert-warning alert-dismissible fade <?= isset($status['error']) ? 'show' : '' ?>" style="position: fixed; right:1rem; top:7rem;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <?php if (isset($status['error'])) : ?>
                             <strong>Error!</strong> <?= $this->e($status['error']) ?>
                     <?php endif ?>
 </div>
 
-<div class="alert alert-danger alert-dismissible fade <?= isset($status['null']) ? 'show' : '' ?>" style="position: fixed; right:0;">
+<div class="alert alert-danger alert-dismissible fade <?= isset($status['null']) ? 'show' : '' ?>" style="position: fixed; right:1rem; top:7rem;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>Error!</strong> Bạn chưa đăng nhập!
 </div>
 <br>
-<div class="container">
+<div class="container rounded p-2 mb-5" style="background-color: aliceblue;">
 
     <div class="d-flex">
         <div style="width: 50%;">
-            <img style="width:100%;" src="<?= '/uploads/' . htmlspecialchars($product['photo']) ?>" alt="">
+            <img style="width:100%;" class="img-thumbnail" src="<?= '/uploads/' . htmlspecialchars($product['photo']) ?>" alt="">
         </div>
         <div class="d-flex flex-column justify-content-around px-3">
             <h2 class="bold">
@@ -53,9 +53,12 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
             <h3>Thông tin sản phẩm:
                 <?= $this->e($product->desc) ?>
             </h3>
-            <span>Số lượng trong kho:
+            <h4>Số lượng trong kho:
                 <?= $this->e($product->quantity) ?>
-            </span>
+            </h4>
+            <h4>
+                Giá: <?= $this->e($product->price) ?>VND
+            </h4>
             <form action="<?= '/product/' . $this->e($product->id) ?>" method="post">
                 <div>
 

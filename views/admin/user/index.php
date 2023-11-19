@@ -3,7 +3,7 @@
 <?php $this->start("pagee") ?>
 
 
-    <div class="container">
+    <div class="container bg-white mt-3 mb-5 rounded py-3">
         <!-- SECTION HEADING -->
         <h2 class="mt-3 text-center animate__animated animate__bounce">User</h2>
 
@@ -31,11 +31,9 @@
                                     <?= $this->e($user->email) ?>
                                 </td>
                                 <td class="d-flex justify-content-center">
-                                    <a href="<?= '/dashboard/user/view/' . $this->e($user->id) ?>" class="btn btn-xs btn-success">
-                                        <i alt="view" class="fa fa-pencil"></i> View</a>
                                     <form class="form-inline ml-1" action="<?= '/dashboard/user/delete/' . $this->e($user->id) ?>"
                                         method="POST">
-                                        <button type="submit" class="btn btn-xs btn-danger" name="delete-table">
+                                        <button disabled type="submit" class="btn btn-xs btn-danger" name="delete-table">
                                             <i alt="Delete" class="fa fa-trash"></i> Delete
                                         </button>
                                     </form>

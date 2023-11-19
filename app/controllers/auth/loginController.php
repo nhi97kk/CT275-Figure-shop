@@ -41,7 +41,7 @@ class LoginController extends Controller
             else redirect('/dashboard');
         } else {
             // Sai mật khẩu...
-            $errors['password'] = 'Invalid email or password.wth' . $user_credentials['password'] . $user->password;
+            $errors['password'] = 'Invalid email or password' ;
         }
 
         // Đăng nhập không thành công: lưu giá trị trong form, trừ password

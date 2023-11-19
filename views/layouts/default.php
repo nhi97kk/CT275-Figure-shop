@@ -24,7 +24,9 @@
 
 </head>
 
-<body>
+<body style="
+    background-image: linear-gradient(180deg,#536b72,#0b3975a8); min-height: 100vh;
+";>
     
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <a class="navbar-brand" href="/">
@@ -36,16 +38,10 @@
         <?php if (!\App\SessionGuard::isUserLoggedIn() ||\App\SessionGuard::isUserLoggedIn() && \App\SessionGuard::user()->role === 0): ?>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/">Trang chủ</a>
+                <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/product">Sản phẩm</a>
-            </li>
-            <li class="nav-item ml-5">
-                <form class="form-inline" action="/">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
-                </form>
+                <a class="nav-link" href="/product">Products</a>
             </li>
         </ul>
         <?php endif ?>
@@ -61,7 +57,7 @@
                                     class="fa-solid fa-cart-shopping"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a href="/order" class="nav-link mr-3">Đơn mua</a>
+                            <a href="/order" class="nav-link mr-3">Order</a>
                         </li>
                     <?php endif ?>
                     <li class="nav-item dropdown">
@@ -88,9 +84,9 @@
 
     <?= $this->section("page") ?>
 
-    <footer class="footer">
+    <footer class="footer mt-3 fixed-bottom" style="background-color: aliceblue;">
         <div class="container text-center">
-            <p class="text-muted">Copyright &copy; 2023 Figure is so interesting!!</p>
+            <p class="text-muted m-0">Contact with our --> <i class="fa-brands fa-facebook"></i>  <i class="fa-brands fa-instagram"></i></p>
         </div>
     </footer>
 
