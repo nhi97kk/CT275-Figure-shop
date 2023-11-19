@@ -33,7 +33,7 @@
                 <?= $this->e($title) ?>
             </b>
         </a>
-        <?php if (\App\SessionGuard::isUserLoggedIn() && \App\SessionGuard::user()->role === 0): ?>
+        <?php if (!\App\SessionGuard::isUserLoggedIn() ||\App\SessionGuard::isUserLoggedIn() && \App\SessionGuard::user()->role === 0): ?>
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="/">Trang chủ</a>
@@ -59,6 +59,9 @@
                         <li class="nav-item">
                             <a href="/cart" class="nav-link mr-3"><i style="font-size: 1.5rem;"
                                     class="fa-solid fa-cart-shopping"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/order" class="nav-link mr-3">Đơn mua</a>
                         </li>
                     <?php endif ?>
                     <li class="nav-item dropdown">

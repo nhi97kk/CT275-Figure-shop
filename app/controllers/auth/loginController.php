@@ -52,7 +52,7 @@ class LoginController extends Controller
     public function destroy()
     {
         Guard::logout();
-        redirect('/login');
+        redirect('/');
     }
 
     protected function filterUserCredentials(array $data)

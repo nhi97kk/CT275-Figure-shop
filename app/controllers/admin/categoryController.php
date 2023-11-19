@@ -10,9 +10,7 @@ use App\Models\Category;
 class CategoryController extends Controller{
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 0){
+         if(Guard::user()->role === 0){
             redirect('/');
         }
         parent::__construct();

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model{
     protected $table = "orders";
-    protected $fillable = ['user_id','name','address','phone'] ;
+    protected $fillable = ['user_id','name','address','phone','total'] ;
 
     public static function validate(array $data){
         $errors = [];

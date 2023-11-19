@@ -12,9 +12,7 @@ use App\SessionGuard as Guard;
 class CartController extends Controller{
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 1){
+        if(Guard::isUserLoggedIn() && Guard::user()->role === 1){
             redirect('/dashboard');
         }
         parent::__construct();
@@ -22,7 +20,7 @@ class CartController extends Controller{
 
     public function index(){
         $user = Guard::user();
-        $carts = Cart::where('user_id',$user->id)->get();
+        $carts = Cart::where('user_id',$user->id)->where('order_id', 0)->get();
 
         $this->sendPage('/user/cart',['carts'=>$carts]);
     }

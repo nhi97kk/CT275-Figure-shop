@@ -13,9 +13,7 @@ use App\SessionGuard as Guard;
 class OrderController extends Controller{
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 1){
+        if(Guard::isUserLoggedIn() && Guard::user()->role === 1){
             redirect('/dashboard');
         }
         parent::__construct();
@@ -48,6 +46,10 @@ class OrderController extends Controller{
             foreach ($carts as $cart) {
                 $cart->order_id = $order->id;
                 $cart->save();
+
+                $product = Product::findOrfail($cart->product_id);
+                $product->quantity -= $cart->quantity;
+                $product->save();
             }
 
             redirect('/order');
@@ -61,6 +63,7 @@ class OrderController extends Controller{
     protected function filterData(array $data)
     {
         return [
+            'total' => $data['total'] ?? 0,
             'name' => $data['name'] ?? '',
             'address' => $data['address'] ?? '',
             'phone' => preg_replace('/\D+/', '', $data['phone'])
@@ -68,9 +71,12 @@ class OrderController extends Controller{
     }
 
     public function index(){
-        $orders = Order::all();
+        $user = Guard::user();
+        $orders = Order::where('user_id',$user->id)->get();
 
-        $this->sendPage('/user/order',['orders'=>$orders]);
+        $this->sendPage('/user/order',
+                ['orders'=>$orders,
+                'user'=>$user]);
     }
     
 }

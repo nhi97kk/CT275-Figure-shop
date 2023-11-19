@@ -10,16 +10,17 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 1){
+        if(Guard::isUserLoggedIn() && Guard::user()->role === 1){
             redirect('/dashboard');
         }
         parent::__construct();
     }
     public function index()
     {
-
         $this->sendPage('/user/home');
     }
 }
+
+// if (!Guard::isUserLoggedIn()) {
+//     redirect('/login');
+// } else

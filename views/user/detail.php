@@ -27,11 +27,17 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong>Success!</strong> Đã thêm sản phẩm vào giỏ hàng!
 </div>
+
 <div class="alert alert-warning alert-dismissible fade <?= isset($status['error']) ? 'show' : '' ?>" style="position: fixed; right:0;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <?php if (isset($status['error'])) : ?>
                             <strong>Error!</strong> <?= $this->e($status['error']) ?>
                     <?php endif ?>
+</div>
+
+<div class="alert alert-danger alert-dismissible fade <?= isset($status['null']) ? 'show' : '' ?>" style="position: fixed; right:0;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Error!</strong> Bạn chưa đăng nhập!
 </div>
 <br>
 <div class="container">
@@ -53,8 +59,11 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
             <form action="<?= '/product/' . $this->e($product->id) ?>" method="post">
                 <div>
 
-                    <?php $user = \App\SessionGuard::user() ?>
-                    <input type="hidden" name="user_id" value="<?= $this->e($user->id) ?>">
+                    
+                    <?php if(\App\SessionGuard::isUserLoggedIn()): ?>
+                        <?php $user = \App\SessionGuard::user() ?>
+                        <input type="hidden" name="user_id" value="<?= $this->e($user->id) ?>">
+                    <?php endif ?>
 
                     <input name="product_id" type="hidden" value="<?= $this->e($product->id) ?>">
 
@@ -108,7 +117,7 @@ $this->layout("layouts/default", ["title" => APPNAME]) ?>
 
         setTimeout(function () {
             $(".alert").removeClass('show');
-        }, 5000);
+        }, 3000);
 
     });
 

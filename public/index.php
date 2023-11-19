@@ -41,6 +41,9 @@ $router->get('/dashboard', '\App\Controllers\Admin\AdminController@index');
     $router->get('/dashboard/change-password','\App\Controllers\Admin\InfoController@change');
     $router->post('/dashboard/change-password','\App\Controllers\Admin\InfoController@store');
     $router->get('/dashboard/change-password/success','\App\Controllers\Admin\InfoController@success');
+    //order
+    $router->get('/dashboard/order', '\App\Controllers\Admin\OrderController@index');
+    $router->get('/dashboard/order/(\d+)', '\App\Controllers\Admin\OrderController@view');
 
 // User routes
 $router->get('/', '\App\Controllers\User\UserController@index');

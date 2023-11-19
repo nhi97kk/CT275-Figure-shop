@@ -11,9 +11,7 @@ use App\Models\Product;
 class ProductController extends Controller{
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 0){
+         if(Guard::user()->role === 0){
             redirect('/');
         }
         parent::__construct();

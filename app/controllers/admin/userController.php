@@ -9,9 +9,7 @@ use App\Models\User;
 class UserController extends Controller{
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 0){
+         if(Guard::user()->role === 0){
             redirect('/');
         }
         parent::__construct();
@@ -22,3 +20,7 @@ class UserController extends Controller{
         $this->sendPage('/admin/user/index', ['users'=>$users]);
     }
 }
+
+// if (!Guard::isUserLoggedIn()) {
+//     redirect('/login');
+// } else

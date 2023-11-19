@@ -12,9 +12,7 @@ use App\SessionGuard as Guard;
 class ProductController extends Controller{
     public function __construct()
     {
-        if (!Guard::isUserLoggedIn()) {
-            redirect('/login');
-        } else if(Guard::user()->role === 1){
+        if(Guard::isUserLoggedIn() && Guard::user()->role === 1){
             redirect('/dashboard');
         }
         parent::__construct();
@@ -33,10 +31,12 @@ class ProductController extends Controller{
     }
 
     public function add(){
-        
 
         $data = $this->filterData($_POST);
         $status = Cart::validate($data);
+        if(isset($status['null'])){
+            redirect('/product/' . $data['product_id'], ['status'=> $status]);
+        }
 
         $exist = Cart::where('user_id', $data['user_id'])->where('product_id', $data['product_id'])->first();
 

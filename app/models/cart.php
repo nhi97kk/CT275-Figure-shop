@@ -12,9 +12,13 @@ class Cart extends Model{
     public static function validate(array $data)
     {
         $status = [];
+        if(empty($data['user_id'])){
+            $status['null'] = 'null';
+            return $status;
+        }
 
-        $exist = Cart::where('user_id', $data['user_id'])->where('product_id', $data['product_id'])->first();
-        
+        $exist = Cart::where('user_id', $data['user_id'])->where('product_id', $data['product_id'])->where('order_id', 0)->first();
+
         $product = Product::findOrFail($data['product_id']);
 
         if (!isset($exist)) {
